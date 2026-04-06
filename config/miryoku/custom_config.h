@@ -5,6 +5,10 @@
 // QWERTY base layout
 #define MIRYOKU_ALPHAS_QWERTY
 
+// QWERTY for Extra and Tap layers too
+#define MIRYOKU_EXTRA_QWERTY
+#define MIRYOKU_TAP_QWERTY
+
 // Vi-style navigation (HJKL)
 #define MIRYOKU_NAV_VI
 

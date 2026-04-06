@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pskeeb5 Miryoku Keymap</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #a0d2db;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  .layer-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .tab {
+    padding: 6px 14px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: inherit;
+    background: #16213e;
+    color: #888;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .tab:hover { border-color: #555; color: #bbb; }
+  .tab.active {
+    background: #0f3460;
+    border-color: #a0d2db;
+    color: #a0d2db;
+    font-weight: 600;
+  }
+  .tab .layer-num {
+    font-size: 0.6rem;
+    opacity: 0.5;
+    margin-right: 4px;
+  }
+  .layer-info {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 0.8rem;
+    color: #666;
+    min-height: 1.2em;
+  }
+  .layer-info .activate {
+    color: #e2b714;
+    font-weight: 600;
+  }
+  .keyboard {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .row.thumb-row {
+    gap: 4px;
+  }
+  .half-gap { width: 24px; flex-shrink: 0; }
+  .thumb-gap { width: 68px; flex-shrink: 0; }
+  .key {
+    width: 72px;
+    height: 52px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    background: #16213e;
+    position: relative;
+    transition: all 0.15s;
+  }
+  .key:hover {
+    border-color: #a0d2db;
+    background: #1a2a4e;
+    transform: translateY(-1px);
+  }
+  .key .tap { color: #e0e0e0; font-weight: 600; font-size: 0.7rem; }
+  .key .hold {
+    color: #e2b714;
+    font-size: 0.55rem;
+    margin-top: 2px;
+    opacity: 0.8;
+  }
+  .key.blank { opacity: 0.25; }
+  .key.mouse-btn {
+    background: #1a2e1a;
+    border-color: #4a7;
+  }
+  .key.mouse-btn .tap { color: #6fcf97; }
+  .key.nav-key .tap { color: #82b1ff; }
+  .key.mod-key .tap { color: #c792ea; }
+  .key.mod-key .hold { color: #c792ea; }
+  .key.layer-switch {
+    background: #2a1a2e;
+    border-color: #7c4dff50;
+  }
+  .key.layer-switch .tap { color: #b388ff; }
+  .key.danger {
+    background: #2e1a1a;
+    border-color: #f4433650;
+  }
+  .key.danger .tap { color: #ef5350; }
+  .key.symbol .tap { color: #ffcc80; }
+  .key.number .tap { color: #80cbc4; }
+  .key.fkey .tap { color: #90caf9; }
+  .key.media .tap { color: #f48fb1; }
+  .key.bt .tap { color: #4fc3f7; }
+  .key.clipboard .tap { color: #a5d6a7; }
+  .key.tp-key {
+    background: #2e2a1a;
+    border-color: #ffa72680;
+  }
+  .key.tp-key .tap { color: #ffa726; }
+  .key.scroll .tap { color: #4dd0e1; }
+  .key.held {
+    background: #0f3460;
+    border-color: #a0d2db;
+    box-shadow: 0 0 8px #a0d2db40;
+  }
+  .key.held .tap { color: #a0d2db; }
+  .encoder-row {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 12px;
+  }
+  .encoder {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    background: #16213e;
+    font-size: 0.65rem;
+  }
+  .encoder .label { color: #888; }
+  .encoder .action { color: #a0d2db; font-weight: 600; }
+  .encoder svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: #888;
+    stroke-width: 2;
+  }
+  .legend {
+    max-width: 880px;
+    margin: 24px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    font-size: 0.65rem;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .legend-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+  .combo-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.7rem;
+    color: #666;
+  }
+  .combo-note span { color: #6fcf97; }
+</style>
+</head>
+<body>
+
+<h1>pskeeb5 Miryoku Keymap</h1>
+<div class="subtitle">QWERTY | Vi Nav | Mac Clipboard | Trackpoint</div>
+
+<div class="layer-tabs" id="tabs"></div>
+<div class="layer-info" id="layerInfo"></div>
+<div class="keyboard" id="keyboard"></div>
+<div class="encoder-row" id="encoders"></div>
+<div class="combo-note"><span>RCLK</span> + <span>LCLK</span> combo = Middle Click</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch" style="background:#e0e0e0"></div> Alphanumeric</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#e2b714"></div> Hold action</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#c792ea"></div> Modifier</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#6fcf97"></div> Mouse</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#b388ff"></div> Layer switch</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#ffcc80"></div> Symbol</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#80cbc4"></div> Number</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#82b1ff"></div> Navigation</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#ffa726"></div> Trackpoint</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#f48fb1"></div> Media</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#4fc3f7"></div> Bluetooth</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#ef5350"></div> Boot/Reset</div>
+</div>
+
+<script>
+const K = (tap, hold, cls) => ({ tap, hold: hold || '', cls: cls || '' });
+const B = () => K('', '', 'blank');
+
+const layers = [
+  {
+    name: 'BASE', num: 0, activate: 'Default layer',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('Q'),K('W'),K('E'),K('R'),K('T'),  K('Y'),K('U'),K('I'),K('O'),K('P')],
+      [K('A','GUI','mod-key'),K('S','ALT','mod-key'),K('D','CTRL','mod-key'),K('F','SHFT','mod-key'),K('G'),
+       K('H'),K('J','SHFT','mod-key'),K('K','CTRL','mod-key'),K('L','ALT','mod-key'),K("'",'GUI','mod-key')],
+      [K('Z','BTN','mod-key'),K('X','RALT','mod-key'),K('C'),K('V'),K('B'),
+       K('N'),K('M'),K(','),K('.','RALT','mod-key'),K('/','BTN','mod-key')],
+      [K('RCLK','','mouse-btn'),K('ESC','MEDIA'),K('SPC','NAV'),K('TAB','MOUSE'),
+       K('RET','SYM'),K('BSPC','NUM'),K('DEL','FUN'),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'EXTRA', num: 1, activate: 'Double-tap EXTRA* from any layer',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('Q'),K('W'),K('E'),K('R'),K('T'),  K('Y'),K('U'),K('I'),K('O'),K('P')],
+      [K('A','GUI','mod-key'),K('S','ALT','mod-key'),K('D','CTRL','mod-key'),K('F','SHFT','mod-key'),K('G'),
+       K('H'),K('J','SHFT','mod-key'),K('K','CTRL','mod-key'),K('L','ALT','mod-key'),K("'",'GUI','mod-key')],
+      [K('Z','BTN','mod-key'),K('X','RALT','mod-key'),K('C'),K('V'),K('B'),
+       K('N'),K('M'),K(','),K('.','RALT','mod-key'),K('/','BTN','mod-key')],
+      [K('RCLK','','mouse-btn'),K('ESC','MEDIA'),K('SPC','NAV'),K('TAB','MOUSE'),
+       K('RET','SYM'),K('BSPC','NUM'),K('DEL','FUN'),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'TAP', num: 2, activate: 'Double-tap TAP* from any layer',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('Q'),K('W'),K('E'),K('R'),K('T'),  K('Y'),K('U'),K('I'),K('O'),K('P')],
+      [K('A'),K('S'),K('D'),K('F'),K('G'),  K('H'),K('J'),K('K'),K('L'),K("'")],
+      [K('Z'),K('X'),K('C'),K('V'),K('B'),  K('N'),K('M'),K(','),K('.'),K('/')],
+      [K('RCLK','','mouse-btn'),K('ESC'),K('SPC'),K('TAB'),
+       K('RET'),K('BSPC'),K('DEL'),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'BUTTON', num: 3, activate: 'Hold Z or / on BASE',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('UNDO','','clipboard'),K('CUT','','clipboard'),K('COPY','','clipboard'),K('PASTE','','clipboard'),K('REDO','','clipboard'),
+       K('REDO','','clipboard'),K('PASTE','','clipboard'),K('COPY','','clipboard'),K('CUT','','clipboard'),K('UNDO','','clipboard')],
+      [K('GUI','','mod-key'),K('ALT','','mod-key'),K('CTRL','','mod-key'),K('SHFT','','mod-key'),B(),
+       B(),K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key')],
+      [K('UNDO','','clipboard'),K('CUT','','clipboard'),K('COPY','','clipboard'),K('PASTE','','clipboard'),K('REDO','','clipboard'),
+       K('REDO','','clipboard'),K('PASTE','','clipboard'),K('COPY','','clipboard'),K('CUT','','clipboard'),K('UNDO','','clipboard')],
+      [K('RCLK','','mouse-btn'),K('BTN3','','mouse-btn'),K('BTN1','','mouse-btn'),K('BTN2','','mouse-btn'),
+       K('BTN2','','mouse-btn'),K('BTN1','','mouse-btn'),K('BTN3','','mouse-btn'),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'NAV', num: 4, activate: 'Hold SPC on BASE',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('BOOT','','danger'),K('TAP*','','layer-switch'),K('EXTRA*','','layer-switch'),K('BASE*','','layer-switch'),B(),
+       K('REDO','','clipboard'),K('PASTE','','clipboard'),K('COPY','','clipboard'),K('CUT','','clipboard'),K('UNDO','','clipboard')],
+      [K('GUI','','mod-key'),K('ALT','','mod-key'),K('CTRL','','mod-key'),K('SHFT','','mod-key'),B(),
+       K('\u2190','','nav-key'),K('\u2193','','nav-key'),K('\u2191','','nav-key'),K('\u2192','','nav-key'),K('CAPSW','','nav-key')],
+      [B(),K('RALT','','mod-key'),K('NUM*','','layer-switch'),K('NAV*','','layer-switch'),B(),
+       K('HOME','','nav-key'),K('PG DN','','nav-key'),K('PG UP','','nav-key'),K('END','','nav-key'),K('INS','','nav-key')],
+      [K('RCLK','','mouse-btn'),B(),K('','','held'),B(),
+       K('RET'),K('BSPC'),K('DEL'),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'MOUSE', num: 5, activate: 'Hold TAB on BASE',
+    encoderL: ['Scrl Up', 'Scrl Dn'], encoderR: ['Scrl L', 'Scrl R'],
+    keys: [
+      [K('BOOT','','danger'),K('TAP*','','layer-switch'),K('EXTRA*','','layer-switch'),K('BASE*','','layer-switch'),B(),
+       K('REDO','','clipboard'),K('PASTE','','clipboard'),K('COPY','','clipboard'),K('CUT','','clipboard'),K('UNDO','','clipboard')],
+      [K('GUI','','mod-key'),K('ALT','','mod-key'),K('CTRL','','mod-key'),K('SHFT','','mod-key'),B(),
+       B(),K('WH L','','scroll'),K('WH DN','','scroll'),K('WH UP','','scroll'),K('WH R','','scroll')],
+      [B(),K('RALT','','mod-key'),K('SYM*','','layer-switch'),K('MOUSE*','','layer-switch'),B(),
+       K('TP S-','','tp-key'),K('TP S+','','tp-key'),B(),B(),B()],
+      [K('RCLK','','mouse-btn'),B(),B(),K('','','held'),
+       K('BTN2','','mouse-btn'),K('BTN1','','mouse-btn'),K('BTN3','','mouse-btn'),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'MEDIA', num: 6, activate: 'Hold ESC on BASE',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Prev', 'Next'],
+    keys: [
+      [K('BOOT','','danger'),K('TAP*','','layer-switch'),K('EXTRA*','','layer-switch'),K('BASE*','','layer-switch'),B(),
+       K('RGB EFF','','media'),K('RGB HUE','','media'),K('RGB SAT','','media'),K('RGB BRI','','media'),K('RGB TOG','','media')],
+      [K('GUI','','mod-key'),K('ALT','','mod-key'),K('CTRL','','mod-key'),K('SHFT','','mod-key'),B(),
+       K('PREV','','media'),K('VOL DN','','media'),K('VOL UP','','media'),K('NEXT','','media'),K('EP TOG','','media')],
+      [B(),K('RALT','','mod-key'),K('FUN*','','layer-switch'),K('MEDIA*','','layer-switch'),B(),
+       K('BT 0','','bt'),K('BT 1','','bt'),K('BT 2','','bt'),K('BT 3','','bt'),K('OUT TOG','','bt')],
+      [K('RCLK','','mouse-btn'),K('','','held'),B(),B(),
+       K('STOP','','media'),K('PP','','media'),K('MUTE','','media'),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'NUM', num: 7, activate: 'Hold BSPC on BASE',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('[','','symbol'),K('7','','number'),K('8','','number'),K('9','','number'),K(']','','symbol'),
+       B(),K('BASE*','','layer-switch'),K('EXTRA*','','layer-switch'),K('TAP*','','layer-switch'),K('BOOT','','danger')],
+      [K(';','','symbol'),K('4','','number'),K('5','','number'),K('6','','number'),K('=','','symbol'),
+       B(),K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key')],
+      [K('`','','symbol'),K('1','','number'),K('2','','number'),K('3','','number'),K('\\','','symbol'),
+       B(),K('NUM*','','layer-switch'),K('NAV*','','layer-switch'),K('RALT','','mod-key'),B()],
+      [K('RCLK','','mouse-btn'),K('.','','number'),K('0','','number'),K('-','','symbol'),
+       B(),K('','','held'),B(),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'SYM', num: 8, activate: 'Hold RET on BASE',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('{','','symbol'),K('&','','symbol'),K('*','','symbol'),K('(','','symbol'),K('}','','symbol'),
+       B(),K('BASE*','','layer-switch'),K('EXTRA*','','layer-switch'),K('TAP*','','layer-switch'),K('BOOT','','danger')],
+      [K(':','','symbol'),K('$','','symbol'),K('%','','symbol'),K('^','','symbol'),K('+','','symbol'),
+       B(),K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key')],
+      [K('~','','symbol'),K('!','','symbol'),K('@','','symbol'),K('#','','symbol'),K('|','','symbol'),
+       B(),K('SYM*','','layer-switch'),K('MOUSE*','','layer-switch'),K('RALT','','mod-key'),B()],
+      [K('RCLK','','mouse-btn'),K('(','','symbol'),K(')','','symbol'),K('_','','symbol'),
+       K('','','held'),B(),B(),K('LCLK','','mouse-btn')]
+    ]
+  },
+  {
+    name: 'FUN', num: 9, activate: 'Hold DEL on BASE',
+    encoderL: ['Vol -', 'Vol +'], encoderR: ['Left', 'Right'],
+    keys: [
+      [K('F12','','fkey'),K('F7','','fkey'),K('F8','','fkey'),K('F9','','fkey'),K('PSCRN','','fkey'),
+       B(),K('BASE*','','layer-switch'),K('EXTRA*','','layer-switch'),K('TAP*','','layer-switch'),K('BOOT','','danger')],
+      [K('F11','','fkey'),K('F4','','fkey'),K('F5','','fkey'),K('F6','','fkey'),K('SLCK','','fkey'),
+       B(),K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key')],
+      [K('F10','','fkey'),K('F1','','fkey'),K('F2','','fkey'),K('F3','','fkey'),K('PAUSE','','fkey'),
+       B(),K('FUN*','','layer-switch'),K('MEDIA*','','layer-switch'),K('RALT','','mod-key'),B()],
+      [K('RCLK','','mouse-btn'),K('APP'),K('SPC'),K('TAB'),
+       B(),B(),K('','','held'),K('LCLK','','mouse-btn')]
+    ]
+  }
+];
+
+let current = 0;
+
+function renderKey(k) {
+  const cls = ['key', k.cls].filter(Boolean).join(' ');
+  const tap = k.tap ? `<div class="tap">${k.tap}</div>` : '<div class="tap"></div>';
+  const hold = k.hold ? `<div class="hold">${k.hold}</div>` : '';
+  return `<div class="${cls}">${tap}${hold}</div>`;
+}
+
+function render() {
+  const layer = layers[current];
+
+  // Tabs
+  document.getElementById('tabs').innerHTML = layers.map((l, i) =>
+    `<div class="tab ${i === current ? 'active' : ''}" onclick="current=${i};render()">` +
+    `<span class="layer-num">${l.num}</span>${l.name}</div>`
+  ).join('');
+
+  // Info
+  document.getElementById('layerInfo').innerHTML =
+    `<span class="activate">${layer.activate}</span>`;
+
+  // Keyboard
+  const rows = layer.keys;
+  let html = '';
+
+  // Alpha rows (0-2)
+  for (let r = 0; r < 3; r++) {
+    html += '<div class="row">';
+    for (let c = 0; c < 5; c++) html += renderKey(rows[r][c]);
+    html += '<div class="half-gap"></div>';
+    for (let c = 5; c < 10; c++) html += renderKey(rows[r][c]);
+    html += '</div>';
+  }
+
+  // Thumb row
+  html += '<div class="row thumb-row">';
+  html += renderKey(rows[3][0]); // RCLK
+  html += '<div class="thumb-gap"></div>';
+  for (let c = 1; c < 4; c++) html += renderKey(rows[3][c]);
+  html += '<div class="half-gap"></div>';
+  for (let c = 4; c < 7; c++) html += renderKey(rows[3][c]);
+  html += '<div class="thumb-gap"></div>';
+  html += renderKey(rows[3][7]); // LCLK
+  html += '</div>';
+
+  document.getElementById('keyboard').innerHTML = html;
+
+  // Encoders
+  const svg = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3-3m0 0l3 3m-3-3v8"/></svg>`;
+  document.getElementById('encoders').innerHTML =
+    `<div class="encoder">${svg}<span class="label">L:</span><span class="action">${layer.encoderL[0]}</span> / <span class="action">${layer.encoderL[1]}</span></div>` +
+    `<div class="encoder">${svg}<span class="label">R:</span><span class="action">${layer.encoderR[0]}</span> / <span class="action">${layer.encoderR[1]}</span></div>`;
+}
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (e.key >= '0' && e.key <= '9') { current = +e.key; render(); }
+  if (e.key === 'ArrowRight' || e.key === 'l') { current = (current + 1) % layers.length; render(); }
+  if (e.key === 'ArrowLeft' || e.key === 'h') { current = (current - 1 + layers.length) % layers.length; render(); }
+});
+
+render();
+</script>
+</body>
+</html>
