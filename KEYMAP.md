@@ -19,7 +19,7 @@ Combo: RCLK + LCLK = Middle Click
 ╰──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
   LCLK                │ ESC/MEDIA│ SPC/NAV  │ TAB/MOUSE│   │ RET/SYM  │ BSPC/NUM │ DEL/FUN  │                RCLK
                       ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
-  Encoder L: Vol-/Vol+                                                           Encoder R: Left/Right
+  Encoder L: Vol-/Vol+                                                           Encoder R: Prev/Next
 ```
 
 ## Layer 1: EXTRA (QWERTY alternate)
@@ -66,7 +66,7 @@ Same layout as BASE but with QWERTY home row mods (default Extra = QWERTY).
 ╰──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
   LCLK                │          │  ****    │          │   │  RET     │  BSPC    │  DEL     │                RCLK
                       ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
-  Encoder L: Vol-/Vol+                                                           Encoder R: Left/Right
+  Encoder L: Vol-/Vol+                                                           Encoder R: Prev/Next
 ```
 
 ## Layer 5: MOUSE (trackpoint-optimized, hold Tab on BASE)
@@ -164,8 +164,5 @@ BT keys: tap = select profile, shift+tap = select + clear
 
 | Layer       | Left Encoder      | Right Encoder       |
 |-------------|-------------------|---------------------|
-| BASE        | Volume -/+        | Left / Right        |
-| NAV         | Volume -/+        | Left / Right        |
 | MOUSE       | Scroll Up/Down    | Scroll Left/Right   |
-| MEDIA       | Volume -/+        | Prev / Next Track   |
-| All others  | Volume -/+        | Left / Right        |
+| All layers  | Volume -/+        | Prev / Next Track   |
