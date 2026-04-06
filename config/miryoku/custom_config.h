@@ -2,18 +2,28 @@
 
 #pragma once
 
-// QWERTY base layout
-#define MIRYOKU_ALPHAS_QWERTY
-
-// QWERTY for Extra and Tap layers too
-#define MIRYOKU_EXTRA_QWERTY
-#define MIRYOKU_TAP_QWERTY
-
 // Vi-style navigation (HJKL)
 #define MIRYOKU_NAV_VI
 
 // Mac clipboard shortcuts
 #define MIRYOKU_CLIPBOARD_MAC
+
+// QWERTY for Tap layer
+#define MIRYOKU_TAP_QWERTY
+
+// Custom BASE: QWERTY with right-hand home row mods on HJKL (not JKL')
+#define MIRYOKU_LAYER_BASE \
+&kp Q,             &kp W,             &kp E,             &kp R,             &kp T,             &kp Y,             &kp U,             &kp I,             &kp O,             &kp P,             \
+U_MT(LGUI, A),     U_MT(LALT, S),     U_MT(LCTRL, D),    U_MT(LSHFT, F),    &kp G,             U_MT(LSHFT, H),    U_MT(LCTRL, J),    U_MT(LALT, K),     U_MT(LGUI, L),     &kp SQT,           \
+U_LT(U_BUTTON, Z), U_MT(RALT, X),     &kp C,             &kp V,             &kp B,             &kp N,             &kp M,             &kp COMMA,         U_MT(RALT, DOT),   U_LT(U_BUTTON, SLASH),\
+U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
+
+// EXTRA: same as BASE
+#define MIRYOKU_LAYER_EXTRA \
+&kp Q,             &kp W,             &kp E,             &kp R,             &kp T,             &kp Y,             &kp U,             &kp I,             &kp O,             &kp P,             \
+U_MT(LGUI, A),     U_MT(LALT, S),     U_MT(LCTRL, D),    U_MT(LSHFT, F),    &kp G,             U_MT(LSHFT, H),    U_MT(LCTRL, J),    U_MT(LALT, K),     U_MT(LGUI, L),     &kp SQT,           \
+U_LT(U_BUTTON, Z), U_MT(RALT, X),     &kp C,             &kp V,             &kp B,             &kp N,             &kp M,             &kp COMMA,         U_MT(RALT, DOT),   U_LT(U_BUTTON, SLASH),\
+U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
 
 // Custom Mouse layer: trackpoint handles cursor movement,
 // so replace mmv keys with trackpoint sensitivity controls.
