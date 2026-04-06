@@ -7,9 +7,9 @@
 #define U_MSS_TP_S_D &mms MS_TP_SENSITIVITY_DECR
 
 // Miryoku config, mapping, and keymap
-#include "../miryoku/custom_config.h"
-#include "../miryoku/mapping/38/pskeeb5.h"
-#include "../miryoku/miryoku.dtsi"
+#include "miryoku/custom_config.h"
+#include "miryoku/mapping/38/pskeeb5.h"
+#include "miryoku/miryoku.dtsi"
 
 // Additional behaviors for encoders
 / {
