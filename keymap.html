@@ -240,7 +240,7 @@ const layers = [
       [K('Z','BTN','mod-key'),K('X','RALT','mod-key'),K('C'),K('V'),K('B'),
        K('N'),K('M'),K(','),K('.','RALT','mod-key'),K('/','BTN','mod-key')],
       [K('LCLK','','mouse-btn'),K('ESC','MEDIA'),K('SPC','NAV'),K('TAB','MOUSE'),
-       K('RET','SYM'),K('BSPC','NUM'),K('DEL','FUN'),K('RCLK','','mouse-btn')]
+       K('RET','SYM'),K('BSPC','NUM'),K('F19','FUN'),K('RCLK','','mouse-btn')]
     ]
   },
   {
@@ -253,7 +253,7 @@ const layers = [
       [K('Z','BTN','mod-key'),K('X','RALT','mod-key'),K('C'),K('V'),K('B'),
        K('N'),K('M'),K(','),K('.','RALT','mod-key'),K('/','BTN','mod-key')],
       [K('LCLK','','mouse-btn'),K('ESC','MEDIA'),K('SPC','NAV'),K('TAB','MOUSE'),
-       K('RET','SYM'),K('BSPC','NUM'),K('DEL','FUN'),K('RCLK','','mouse-btn')]
+       K('RET','SYM'),K('BSPC','NUM'),K('F19','FUN'),K('RCLK','','mouse-btn')]
     ]
   },
   {
@@ -306,7 +306,7 @@ const layers = [
       [B(),K('RALT','','mod-key'),K('SYM*','','layer-switch'),K('MOUSE*','','layer-switch'),B(),
        K('TP S-','','tp-key'),K('TP S+','','tp-key'),B(),B(),B()],
       [K('LCLK','','mouse-btn'),B(),B(),K('','','held'),
-       K('BTN2','','mouse-btn'),K('BTN1','','mouse-btn'),K('BTN3','','mouse-btn'),K('RCLK','','mouse-btn')]
+       K('BTN1','','mouse-btn'),K('BTN2','','mouse-btn'),K('BTN3','','mouse-btn'),K('RCLK','','mouse-btn')]
     ]
   },
   {
@@ -330,7 +330,7 @@ const layers = [
       [K('[','','symbol'),K('7','','number'),K('8','','number'),K('9','','number'),K(']','','symbol'),
        B(),K('BASE*','','layer-switch'),K('EXTRA*','','layer-switch'),K('TAP*','','layer-switch'),K('BOOT','','danger')],
       [K(';','','symbol'),K('4','','number'),K('5','','number'),K('6','','number'),K('=','','symbol'),
-       B(),K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key')],
+       K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key'),B()],
       [K('`','','symbol'),K('1','','number'),K('2','','number'),K('3','','number'),K('\\','','symbol'),
        B(),K('NUM*','','layer-switch'),K('NAV*','','layer-switch'),K('RALT','','mod-key'),B()],
       [K('LCLK','','mouse-btn'),K('.','','number'),K('0','','number'),K('-','','symbol'),
@@ -344,7 +344,7 @@ const layers = [
       [K('{','','symbol'),K('&','','symbol'),K('*','','symbol'),K('(','','symbol'),K('}','','symbol'),
        B(),K('BASE*','','layer-switch'),K('EXTRA*','','layer-switch'),K('TAP*','','layer-switch'),K('BOOT','','danger')],
       [K(':','','symbol'),K('$','','symbol'),K('%','','symbol'),K('^','','symbol'),K('+','','symbol'),
-       B(),K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key')],
+       K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key'),B()],
       [K('~','','symbol'),K('!','','symbol'),K('@','','symbol'),K('#','','symbol'),K('|','','symbol'),
        B(),K('SYM*','','layer-switch'),K('MOUSE*','','layer-switch'),K('RALT','','mod-key'),B()],
       [K('LCLK','','mouse-btn'),K('(','','symbol'),K(')','','symbol'),K('_','','symbol'),
@@ -352,13 +352,13 @@ const layers = [
     ]
   },
   {
-    name: 'FUN', num: 9, activate: 'Hold DEL on BASE',
+    name: 'FUN', num: 9, activate: 'Hold F19 on BASE',
     encoderL: ['Vol -', 'Vol +'], encoderR: ['Prev', 'Next'],
     keys: [
       [K('F12','','fkey'),K('F7','','fkey'),K('F8','','fkey'),K('F9','','fkey'),K('PSCRN','','fkey'),
        B(),K('BASE*','','layer-switch'),K('EXTRA*','','layer-switch'),K('TAP*','','layer-switch'),K('BOOT','','danger')],
       [K('F11','','fkey'),K('F4','','fkey'),K('F5','','fkey'),K('F6','','fkey'),K('SLCK','','fkey'),
-       B(),K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key')],
+       K('SHFT','','mod-key'),K('CTRL','','mod-key'),K('ALT','','mod-key'),K('GUI','','mod-key'),B()],
       [K('F10','','fkey'),K('F1','','fkey'),K('F2','','fkey'),K('F3','','fkey'),K('PAUSE','','fkey'),
        B(),K('FUN*','','layer-switch'),K('MEDIA*','','layer-switch'),K('RALT','','mod-key'),B()],
       [K('LCLK','','mouse-btn'),K('APP'),K('SPC'),K('TAB'),
