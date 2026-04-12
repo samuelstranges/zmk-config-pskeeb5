@@ -30,9 +30,16 @@ U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT
 // Keep scroll and mouse button bindings.
 #define MIRYOKU_LAYER_MOUSE \
 U_BOOT,            &u_to_U_TAP,       &u_to_U_EXTRA,     &u_to_U_BASE,      U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
-&kp LGUI,          &kp LALT,          &kp LCTRL,         &kp LSHFT,         U_NA,              U_NU,              U_WH_L,            U_WH_D,            U_WH_U,            U_WH_R,            \
+&kp LGUI,          &kp LALT,          &kp LCTRL,         &kp LSHFT,         U_NA,              U_WH_L,            U_WH_D,            U_WH_U,            U_WH_R,            U_NU,              \
 U_NA,              &kp RALT,          &u_to_U_SYM,       &u_to_U_MOUSE,     U_NA,              U_MSS_TP_S_D,      U_MSS_TP_S_I,      U_NU,              U_NU,              U_NU,              \
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              U_BTN1,            U_BTN2,            U_BTN3,            U_NP,              U_NP
+
+// Custom BUTTON: shift mods left to align with HJKL home row
+#define MIRYOKU_LAYER_BUTTON \
+U_UND,             U_CUT,             U_CPY,             U_PST,             U_RDO,             U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
+&kp LGUI,          &kp LALT,          &kp LCTRL,         &kp LSHFT,         U_NU,              &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,          U_NU,              \
+U_UND,             U_CUT,             U_CPY,             U_PST,             U_RDO,             U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
+U_NP,              U_NP,              U_BTN3,            U_BTN1,            U_BTN2,            U_BTN2,            U_BTN1,            U_BTN3,            U_NP,              U_NP
 
 // Custom NUM: shift mods left to align with HJKL home row
 #define MIRYOKU_LAYER_NUM \
