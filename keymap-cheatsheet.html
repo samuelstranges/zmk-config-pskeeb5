@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>pskeeb5 Miryoku Keymap Cheat Sheet</title>
+<style>
+  @media print {
+    body { margin: 0; padding: 8px; }
+    .layer { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 10px;
+  }
+  h1 { text-align: center; font-size: 15px; margin-bottom: 4px; }
+  .note { text-align: center; font-size: 8.5px; color: #666; margin-bottom: 8px; }
+  .layers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .layer {
+    border: 1.5px solid #333;
+    border-radius: 5px;
+    padding: 5px 6px 4px;
+  }
+  .layer-title {
+    font-size: 12px; font-weight: bold;
+    margin-bottom: 4px; padding-bottom: 2px;
+    border-bottom: 1px solid #ccc;
+  }
+  .layer-title span { font-weight: normal; font-size: 8.5px; color: #888; }
+
+  /* Grid-based rows: 5 left, gap, 5 right */
+  .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) 8px repeat(5, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .row .gap { width: 8px; }
+
+  .thumb-row {
+    display: grid;
+    grid-template-columns: auto repeat(3, 1fr) 8px repeat(3, 1fr) auto;
+    gap: 2px;
+    margin-top: 2px;
+  }
+
+  .k {
+    border: 1px solid #999; border-radius: 3px;
+    padding: 3px 1px; text-align: center;
+    font-size: 8.5px; line-height: 1.15;
+    min-height: 26px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: #fafafa;
+  }
+  .k .sub { font-size: 6.5px; color: #888; }
+
+  .k.held   { background: #e0e7ff; border-color: #6366f1; font-weight: bold; }
+  .k.mod    { background: #fef3c7; border-color: #d97706; }
+  .k.nav    { background: #d1fae5; border-color: #059669; }
+  .k.danger { background: #fee2e2; border-color: #dc2626; }
+  .k.trans  { background: #f3f4f6; border-color: #d1d5db; color: #aaa; }
+  .k.none   { background: #fff; border-color: #e5e7eb; color: #ccc; }
+  .k.thumb  { background: #ede9fe; border-color: #7c3aed; }
+  .k.enc    { background: #dbeafe; border-color: #3b82f6; border-radius: 50%; min-width: 28px; min-height: 28px; }
+
+  .encoder-note { font-size: 7.5px; color: #666; text-align: right; margin-top: 1px; }
+</style>
+</head>
+<body>
+
+<h1>pskeeb5 Miryoku Keymap</h1>
+<div class="note">
+  Thumb keys: hold for layer, tap for key | Home row: hold for mod, tap for key | Encoder combo (both) = MCLK<br>
+  Encoders: L = Vol Down/Up, R = Prev/Next (Mouse layer: L = Scroll U/D, R = Scroll L/R)
+</div>
+
+<div class="layers">
+
+<!-- LAYER 1: EXTRA -->
+<div class="layer">
+  <div class="layer-title">Layer 1: EXTRA <span>(same as Base)</span></div>
+  <div class="row">
+    <div class="k">Q</div><div class="k">W</div><div class="k">E</div><div class="k">R</div><div class="k">T</div><div class="gap"></div>
+    <div class="k">Y</div><div class="k">U</div><div class="k">I</div><div class="k">O</div><div class="k">P</div>
+  </div>
+  <div class="row">
+    <div class="k mod">A<div class="sub">GUI</div></div><div class="k mod">S<div class="sub">ALT</div></div><div class="k mod">D<div class="sub">CTL</div></div><div class="k mod">F<div class="sub">SFT</div></div><div class="k">G</div><div class="gap"></div>
+    <div class="k mod">H<div class="sub">SFT</div></div><div class="k mod">J<div class="sub">CTL</div></div><div class="k mod">K<div class="sub">ALT</div></div><div class="k mod">L<div class="sub">GUI</div></div><div class="k">'</div>
+  </div>
+  <div class="row">
+    <div class="k">Z<div class="sub">BTN</div></div><div class="k mod">X<div class="sub">RALT</div></div><div class="k">C</div><div class="k">V</div><div class="k">B</div><div class="gap"></div>
+    <div class="k">N</div><div class="k">M</div><div class="k">,</div><div class="k mod">.<div class="sub">RALT</div></div><div class="k">/<div class="sub">BTN</div></div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k thumb">ESC<div class="sub">MEDIA</div></div><div class="k thumb">SPC<div class="sub">NAV</div></div><div class="k thumb">TAB<div class="sub">MOUSE</div></div>
+    <div class="gap"></div>
+    <div class="k thumb">RET<div class="sub">SYM</div></div><div class="k thumb">BSPC<div class="sub">NUM</div></div><div class="k thumb">F19<div class="sub">FUN</div></div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+</div>
+
+<!-- LAYER 3: BUTTON -->
+<div class="layer">
+  <div class="layer-title">Layer 3: BUTTON <span>(hold Z or /)</span></div>
+  <div class="row">
+    <div class="k nav">Undo</div><div class="k nav">Cut</div><div class="k nav">Copy</div><div class="k nav">Paste</div><div class="k nav">Redo</div><div class="gap"></div>
+    <div class="k nav">Redo</div><div class="k nav">Paste</div><div class="k nav">Copy</div><div class="k nav">Cut</div><div class="k nav">Undo</div>
+  </div>
+  <div class="row">
+    <div class="k mod">GUI</div><div class="k mod">ALT</div><div class="k mod">CTL</div><div class="k mod">SFT</div><div class="k none">--</div><div class="gap"></div>
+    <div class="k none">--</div><div class="k mod">SFT</div><div class="k mod">CTL</div><div class="k mod">ALT</div><div class="k mod">GUI</div>
+  </div>
+  <div class="row">
+    <div class="k nav">Undo</div><div class="k nav">Cut</div><div class="k nav">Copy</div><div class="k nav">Paste</div><div class="k nav">Redo</div><div class="gap"></div>
+    <div class="k nav">Redo</div><div class="k nav">Paste</div><div class="k nav">Copy</div><div class="k nav">Cut</div><div class="k nav">Undo</div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k thumb">MCLK</div><div class="k thumb">LCLK</div><div class="k thumb">RCLK</div>
+    <div class="gap"></div>
+    <div class="k thumb">RCLK</div><div class="k thumb">LCLK</div><div class="k thumb">MCLK</div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+</div>
+
+<!-- LAYER 4: NAV -->
+<div class="layer">
+  <div class="layer-title">Layer 4: NAV <span>(hold Space)</span></div>
+  <div class="row">
+    <div class="k danger">BOOT</div><div class="k">toTAP</div><div class="k">toEXT</div><div class="k">toBASE</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k nav">Redo</div><div class="k nav">Paste</div><div class="k nav">Copy</div><div class="k nav">Cut</div><div class="k nav">Undo</div>
+  </div>
+  <div class="row">
+    <div class="k mod">GUI</div><div class="k mod">ALT</div><div class="k mod">CTL</div><div class="k mod">SFT</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k nav">&larr;</div><div class="k nav">&darr;</div><div class="k nav">&uarr;</div><div class="k nav">&rarr;</div><div class="k">CpsWd</div>
+  </div>
+  <div class="row">
+    <div class="k trans">--</div><div class="k mod">RALT</div><div class="k">toNUM</div><div class="k">toNAV</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k nav">Home</div><div class="k nav">PgDn</div><div class="k nav">PgUp</div><div class="k nav">End</div><div class="k">Ins</div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k trans">--</div><div class="k held">####</div><div class="k trans">--</div>
+    <div class="gap"></div>
+    <div class="k thumb">RET</div><div class="k thumb">BSPC</div><div class="k thumb">DEL</div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+</div>
+
+<!-- LAYER 5: MOUSE -->
+<div class="layer">
+  <div class="layer-title">Layer 5: MOUSE <span>(hold TAB) trackpoint = cursor</span></div>
+  <div class="row">
+    <div class="k danger">BOOT</div><div class="k">toTAP</div><div class="k">toEXT</div><div class="k">toBASE</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k nav">Redo</div><div class="k nav">Paste</div><div class="k nav">Copy</div><div class="k nav">Cut</div><div class="k nav">Undo</div>
+  </div>
+  <div class="row">
+    <div class="k mod">GUI</div><div class="k mod">ALT</div><div class="k mod">CTL</div><div class="k mod">SFT</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k none">--</div><div class="k nav">Scrl L</div><div class="k nav">Scrl D</div><div class="k nav">Scrl U</div><div class="k nav">Scrl R</div>
+  </div>
+  <div class="row">
+    <div class="k trans">--</div><div class="k mod">RALT</div><div class="k">toSYM</div><div class="k">toMSE</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k">TP S-</div><div class="k">TP S+</div><div class="k none">--</div><div class="k none">--</div><div class="k none">--</div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k trans">--</div><div class="k trans">--</div><div class="k held">####</div>
+    <div class="gap"></div>
+    <div class="k thumb">LCLK</div><div class="k thumb">RCLK</div><div class="k thumb">MCLK</div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+  <div class="encoder-note">Encoders: L = Scroll U/D, R = Scroll L/R</div>
+</div>
+
+<!-- LAYER 6: MEDIA -->
+<div class="layer">
+  <div class="layer-title">Layer 6: MEDIA <span>(hold ESC)</span></div>
+  <div class="row">
+    <div class="k danger">BOOT</div><div class="k">toTAP</div><div class="k">toEXT</div><div class="k">toBASE</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k">RGBEff</div><div class="k">RGBHue</div><div class="k">RGBSat</div><div class="k">RGBBrt</div><div class="k">RGBTog</div>
+  </div>
+  <div class="row">
+    <div class="k mod">GUI</div><div class="k mod">ALT</div><div class="k mod">CTL</div><div class="k mod">SFT</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k nav">Prev</div><div class="k nav">Vol-</div><div class="k nav">Vol+</div><div class="k nav">Next</div><div class="k">EPTog</div>
+  </div>
+  <div class="row">
+    <div class="k trans">--</div><div class="k mod">RALT</div><div class="k">toFUN</div><div class="k">toMED</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k">BT 0</div><div class="k">BT 1</div><div class="k">BT 2</div><div class="k">BT 3</div><div class="k">OutTog</div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k held">####</div><div class="k trans">--</div><div class="k trans">--</div>
+    <div class="gap"></div>
+    <div class="k thumb">Stop</div><div class="k thumb">Play/P</div><div class="k thumb">Mute</div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+</div>
+
+<!-- LAYER 7: NUM -->
+<div class="layer">
+  <div class="layer-title">Layer 7: NUM <span>(hold BSPC)</span></div>
+  <div class="row">
+    <div class="k">[</div><div class="k">7</div><div class="k">8</div><div class="k">9</div><div class="k">]</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k">toBASE</div><div class="k">toEXT</div><div class="k">toTAP</div><div class="k danger">BOOT</div>
+  </div>
+  <div class="row">
+    <div class="k">;</div><div class="k">4</div><div class="k">5</div><div class="k">6</div><div class="k">=</div><div class="gap"></div>
+    <div class="k mod">SFT</div><div class="k mod">CTL</div><div class="k mod">ALT</div><div class="k mod">GUI</div><div class="k trans">--</div>
+  </div>
+  <div class="row">
+    <div class="k">`</div><div class="k">1</div><div class="k">2</div><div class="k">3</div><div class="k">\</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k">toNUM</div><div class="k">toNAV</div><div class="k mod">RALT</div><div class="k trans">--</div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k thumb">.</div><div class="k thumb">0</div><div class="k thumb">-</div>
+    <div class="gap"></div>
+    <div class="k trans">--</div><div class="k held">####</div><div class="k trans">--</div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+</div>
+
+<!-- LAYER 8: SYM -->
+<div class="layer">
+  <div class="layer-title">Layer 8: SYM <span>(hold RET)</span></div>
+  <div class="row">
+    <div class="k">{</div><div class="k">&amp;</div><div class="k">*</div><div class="k">(</div><div class="k">}</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k">toBASE</div><div class="k">toEXT</div><div class="k">toTAP</div><div class="k danger">BOOT</div>
+  </div>
+  <div class="row">
+    <div class="k">:</div><div class="k">$</div><div class="k">%</div><div class="k">^</div><div class="k">+</div><div class="gap"></div>
+    <div class="k mod">SFT</div><div class="k mod">CTL</div><div class="k mod">ALT</div><div class="k mod">GUI</div><div class="k trans">--</div>
+  </div>
+  <div class="row">
+    <div class="k">~</div><div class="k">!</div><div class="k">@</div><div class="k">#</div><div class="k">|</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k">toSYM</div><div class="k">toMSE</div><div class="k mod">RALT</div><div class="k trans">--</div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k thumb">(</div><div class="k thumb">)</div><div class="k thumb">_</div>
+    <div class="gap"></div>
+    <div class="k held">####</div><div class="k trans">--</div><div class="k trans">--</div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+</div>
+
+<!-- LAYER 9: FUN -->
+<div class="layer">
+  <div class="layer-title">Layer 9: FUN <span>(hold F19)</span></div>
+  <div class="row">
+    <div class="k">F12</div><div class="k">F7</div><div class="k">F8</div><div class="k">F9</div><div class="k">PrtSc</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k">toBASE</div><div class="k">toEXT</div><div class="k">toTAP</div><div class="k danger">BOOT</div>
+  </div>
+  <div class="row">
+    <div class="k">F11</div><div class="k">F4</div><div class="k">F5</div><div class="k">F6</div><div class="k">ScrLk</div><div class="gap"></div>
+    <div class="k mod">SFT</div><div class="k mod">CTL</div><div class="k mod">ALT</div><div class="k mod">GUI</div><div class="k trans">--</div>
+  </div>
+  <div class="row">
+    <div class="k">F10</div><div class="k">F1</div><div class="k">F2</div><div class="k">F3</div><div class="k">Pause</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k">toFUN</div><div class="k">toMED</div><div class="k mod">RALT</div><div class="k trans">--</div>
+  </div>
+  <div class="thumb-row">
+    <div class="k enc">ENC<div class="sub">LCLK</div></div>
+    <div class="k thumb">Menu</div><div class="k thumb">Space</div><div class="k thumb">Tab</div>
+    <div class="gap"></div>
+    <div class="k trans">--</div><div class="k trans">--</div><div class="k held">####</div>
+    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  </div>
+</div>
+
+</div><!-- .layers -->
+
+<div style="margin-top: 6px; font-size: 8px; color: #888; text-align: center;">
+  <strong>Legend:</strong>
+  <span style="background:#fef3c7;border:1px solid #d97706;padding:1px 4px;border-radius:2px;">Hold = mod</span>
+  <span style="background:#d1fae5;border:1px solid #059669;padding:1px 4px;border-radius:2px;">Nav/Action</span>
+  <span style="background:#e0e7ff;border:1px solid #6366f1;padding:1px 4px;border-radius:2px;">Held layer</span>
+  <span style="background:#fee2e2;border:1px solid #dc2626;padding:1px 4px;border-radius:2px;">Bootloader</span>
+  <span style="background:#ede9fe;border:1px solid #7c3aed;padding:1px 4px;border-radius:2px;">Thumb key</span>
+  <span style="background:#dbeafe;border:1px solid #3b82f6;padding:1px 4px;border-radius:2px;">Encoder</span>
+  <span style="background:#f3f4f6;border:1px solid #d1d5db;padding:1px 4px;border-radius:2px;color:#aaa;">Unused</span>
+  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; TP S+/- = Trackpoint sensitivity &nbsp;|&nbsp; #### = held layer key
+</div>
+
+</body>
+</html>
