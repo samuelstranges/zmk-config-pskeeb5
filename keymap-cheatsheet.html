@@ -38,14 +38,8 @@
     gap: 2px;
     margin-bottom: 2px;
   }
-  .row .gap { width: 8px; }
 
-  .thumb-row {
-    display: grid;
-    grid-template-columns: auto repeat(3, 1fr) 8px repeat(3, 1fr) auto;
-    gap: 2px;
-    margin-top: 2px;
-  }
+  .k.invis { visibility: hidden; }
 
   .k {
     border: 1px solid #999; border-radius: 3px;
@@ -95,12 +89,9 @@
     <div class="k">Z<div class="sub">BTN</div></div><div class="k mod">X<div class="sub">RALT</div></div><div class="k">C</div><div class="k">V</div><div class="k">B</div><div class="gap"></div>
     <div class="k">N</div><div class="k">M</div><div class="k">,</div><div class="k mod">.<div class="sub">RALT</div></div><div class="k">/<div class="sub">BTN</div></div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k thumb">ESC<div class="sub">MEDIA</div></div><div class="k thumb">SPC<div class="sub">NAV</div></div><div class="k thumb">TAB<div class="sub">MOUSE</div></div>
-    <div class="gap"></div>
-    <div class="k thumb">RET<div class="sub">SYM</div></div><div class="k thumb">BSPC<div class="sub">NUM</div></div><div class="k thumb">F19<div class="sub">FUN</div></div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k thumb">ESC<div class="sub">MEDIA</div></div><div class="k thumb">SPC<div class="sub">NAV</div></div><div class="k thumb">TAB<div class="sub">MOUSE</div></div><div class="gap"></div>
+    <div class="k thumb">RET<div class="sub">SYM</div></div><div class="k thumb">BSPC<div class="sub">NUM</div></div><div class="k thumb">F19<div class="sub">FUN</div></div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
 </div>
 
@@ -119,12 +110,9 @@
     <div class="k nav">Undo</div><div class="k nav">Cut</div><div class="k nav">Copy</div><div class="k nav">Paste</div><div class="k nav">Redo</div><div class="gap"></div>
     <div class="k nav">Redo</div><div class="k nav">Paste</div><div class="k nav">Copy</div><div class="k nav">Cut</div><div class="k nav">Undo</div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k thumb">MCLK</div><div class="k thumb">LCLK</div><div class="k thumb">RCLK</div>
-    <div class="gap"></div>
-    <div class="k thumb">RCLK</div><div class="k thumb">LCLK</div><div class="k thumb">MCLK</div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k thumb">MCLK</div><div class="k thumb">LCLK</div><div class="k thumb">RCLK</div><div class="gap"></div>
+    <div class="k thumb">RCLK</div><div class="k thumb">LCLK</div><div class="k thumb">MCLK</div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
 </div>
 
@@ -143,12 +131,9 @@
     <div class="k trans">--</div><div class="k mod">RALT</div><div class="k">toNUM</div><div class="k">toNAV</div><div class="k trans">--</div><div class="gap"></div>
     <div class="k nav">Home</div><div class="k nav">PgDn</div><div class="k nav">PgUp</div><div class="k nav">End</div><div class="k">Ins</div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k trans">--</div><div class="k held">####</div><div class="k trans">--</div>
-    <div class="gap"></div>
-    <div class="k thumb">RET</div><div class="k thumb">BSPC</div><div class="k thumb">DEL</div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k trans">--</div><div class="k held">####</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k thumb">RET</div><div class="k thumb">BSPC</div><div class="k thumb">DEL</div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
 </div>
 
@@ -167,12 +152,9 @@
     <div class="k trans">--</div><div class="k mod">RALT</div><div class="k">toSYM</div><div class="k">toMSE</div><div class="k trans">--</div><div class="gap"></div>
     <div class="k">TP S-</div><div class="k">TP S+</div><div class="k none">--</div><div class="k none">--</div><div class="k none">--</div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k trans">--</div><div class="k trans">--</div><div class="k held">####</div>
-    <div class="gap"></div>
-    <div class="k thumb">LCLK</div><div class="k thumb">RCLK</div><div class="k thumb">MCLK</div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k trans">--</div><div class="k trans">--</div><div class="k held">####</div><div class="gap"></div>
+    <div class="k thumb">LCLK</div><div class="k thumb">RCLK</div><div class="k thumb">MCLK</div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
   <div class="encoder-note">Encoders: L = Scroll U/D, R = Scroll L/R</div>
 </div>
@@ -192,12 +174,9 @@
     <div class="k trans">--</div><div class="k mod">RALT</div><div class="k">toFUN</div><div class="k">toMED</div><div class="k trans">--</div><div class="gap"></div>
     <div class="k">BT 0</div><div class="k">BT 1</div><div class="k">BT 2</div><div class="k">BT 3</div><div class="k">OutTog</div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k held">####</div><div class="k trans">--</div><div class="k trans">--</div>
-    <div class="gap"></div>
-    <div class="k thumb">Stop</div><div class="k thumb">Play/P</div><div class="k thumb">Mute</div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k held">####</div><div class="k trans">--</div><div class="k trans">--</div><div class="gap"></div>
+    <div class="k thumb">Stop</div><div class="k thumb">Play/P</div><div class="k thumb">Mute</div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
 </div>
 
@@ -216,12 +195,9 @@
     <div class="k">`</div><div class="k">1</div><div class="k">2</div><div class="k">3</div><div class="k">\</div><div class="gap"></div>
     <div class="k trans">--</div><div class="k">toNUM</div><div class="k">toNAV</div><div class="k mod">RALT</div><div class="k trans">--</div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k thumb">.</div><div class="k thumb">0</div><div class="k thumb">-</div>
-    <div class="gap"></div>
-    <div class="k trans">--</div><div class="k held">####</div><div class="k trans">--</div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k thumb">.</div><div class="k thumb">0</div><div class="k thumb">-</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k held">####</div><div class="k trans">--</div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
 </div>
 
@@ -240,12 +216,9 @@
     <div class="k">~</div><div class="k">!</div><div class="k">@</div><div class="k">#</div><div class="k">|</div><div class="gap"></div>
     <div class="k trans">--</div><div class="k">toSYM</div><div class="k">toMSE</div><div class="k mod">RALT</div><div class="k trans">--</div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k thumb">(</div><div class="k thumb">)</div><div class="k thumb">_</div>
-    <div class="gap"></div>
-    <div class="k held">####</div><div class="k trans">--</div><div class="k trans">--</div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k thumb">(</div><div class="k thumb">)</div><div class="k thumb">_</div><div class="gap"></div>
+    <div class="k held">####</div><div class="k trans">--</div><div class="k trans">--</div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
 </div>
 
@@ -264,12 +237,9 @@
     <div class="k">F10</div><div class="k">F1</div><div class="k">F2</div><div class="k">F3</div><div class="k">Pause</div><div class="gap"></div>
     <div class="k trans">--</div><div class="k">toFUN</div><div class="k">toMED</div><div class="k mod">RALT</div><div class="k trans">--</div>
   </div>
-  <div class="thumb-row">
-    <div class="k enc">ENC<div class="sub">LCLK</div></div>
-    <div class="k thumb">Menu</div><div class="k thumb">Space</div><div class="k thumb">Tab</div>
-    <div class="gap"></div>
-    <div class="k trans">--</div><div class="k trans">--</div><div class="k held">####</div>
-    <div class="k enc">ENC<div class="sub">RCLK</div></div>
+  <div class="row">
+    <div class="k invis"></div><div class="k enc">ENC<div class="sub">LCLK</div></div><div class="k thumb">Menu</div><div class="k thumb">Space</div><div class="k thumb">Tab</div><div class="gap"></div>
+    <div class="k trans">--</div><div class="k trans">--</div><div class="k held">####</div><div class="k enc">ENC<div class="sub">RCLK</div></div><div class="k invis"></div>
   </div>
 </div>
 
