@@ -7,6 +7,7 @@
   @media print {
     body { margin: 0; padding: 8px; }
     .layer { page-break-inside: avoid; }
+    .theme-toggle { display: none; }
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -31,7 +32,6 @@
   }
   .layer-title span { font-weight: normal; font-size: 8.5px; color: #888; }
 
-  /* Grid-based rows: 5 left, gap, 5 right */
   .row {
     display: grid;
     grid-template-columns: repeat(5, 1fr) 8px repeat(5, 1fr);
@@ -52,6 +52,18 @@
   }
   .k .sub { font-size: 6.5px; color: #888; }
 
+  .encoder-note { font-size: 7.5px; color: #666; text-align: right; margin-top: 1px; }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    position: fixed; top: 8px; right: 8px;
+    padding: 4px 10px; font-size: 10px;
+    border: 1px solid #999; border-radius: 4px;
+    background: #f0f0f0; cursor: pointer;
+  }
+  .theme-toggle:hover { background: #ddd; }
+
+  /* === COLOR THEME (default) === */
   .k.held   { background: #e0e7ff; border-color: #6366f1; font-weight: bold; }
   .k.mod    { background: #fef3c7; border-color: #d97706; }
   .k.nav    { background: #d1fae5; border-color: #059669; }
@@ -61,10 +73,28 @@
   .k.thumb  { background: #ede9fe; border-color: #7c3aed; }
   .k.enc    { background: #dbeafe; border-color: #3b82f6; border-radius: 50%; min-width: 28px; min-height: 28px; }
 
-  .encoder-note { font-size: 7.5px; color: #666; text-align: right; margin-top: 1px; }
+  /* === B&W THEME === */
+  body.bw { color: #000; }
+  body.bw .note { color: #555; }
+  body.bw .layer { border-color: #000; }
+  body.bw .layer-title { border-bottom-color: #999; }
+  body.bw .layer-title span { color: #666; }
+  body.bw .k { border: 1px solid #888; background: #fff; }
+  body.bw .k .sub { color: #555; }
+  body.bw .k.mod    { background: #fff; border: 2px dashed #000; border-color: #000; font-weight: bold; }
+  body.bw .k.nav    { background: #e8e8e8; border: 1.5px solid #000; border-color: #000; }
+  body.bw .k.held   { background: #000; color: #fff; border-color: #000; font-weight: bold; }
+  body.bw .k.danger { background: #fff; border: 3px double #000; border-color: #000; font-weight: bold; }
+  body.bw .k.trans  { background: #fff; border: 1px dotted #bbb; border-color: #bbb; color: #bbb; }
+  body.bw .k.none   { background: #fff; border: 1px dotted #ccc; border-color: #ccc; color: #ccc; }
+  body.bw .k.thumb  { background: #fff; border: 2px solid #000; border-color: #000; }
+  body.bw .k.enc    { background: #fff; border: 2px solid #000; border-color: #000; border-radius: 50%; }
+  body.bw .encoder-note { color: #555; }
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" onclick="document.body.classList.toggle('bw'); this.textContent = document.body.classList.contains('bw') ? 'Color' : 'B&W';">B&W</button>
 
 <h1>pskeeb5 Miryoku Keymap</h1>
 <div class="note">
@@ -74,7 +104,7 @@
 
 <div class="layers">
 
-<!-- LAYER 1: EXTRA -->
+<!-- BASE -->
 <div class="layer">
   <div class="layer-title">BASE <span>(QWERTY)</span></div>
   <div class="row">
@@ -95,7 +125,7 @@
   </div>
 </div>
 
-<!-- LAYER 3: BUTTON -->
+<!-- BUTTON -->
 <div class="layer">
   <div class="layer-title">BUTTON <span>(hold Z or /)</span></div>
   <div class="row">
@@ -116,7 +146,7 @@
   </div>
 </div>
 
-<!-- LAYER 4: NAV -->
+<!-- NAV -->
 <div class="layer">
   <div class="layer-title">NAV <span>(hold Space)</span></div>
   <div class="row">
@@ -137,7 +167,7 @@
   </div>
 </div>
 
-<!-- LAYER 5: MOUSE -->
+<!-- MOUSE -->
 <div class="layer">
   <div class="layer-title">MOUSE <span>(hold TAB) trackpoint = cursor</span></div>
   <div class="row">
@@ -159,7 +189,7 @@
   <div class="encoder-note">Encoders: L = Scroll U/D, R = Scroll L/R</div>
 </div>
 
-<!-- LAYER 6: MEDIA -->
+<!-- MEDIA -->
 <div class="layer">
   <div class="layer-title">MEDIA <span>(hold ESC)</span></div>
   <div class="row">
@@ -180,7 +210,7 @@
   </div>
 </div>
 
-<!-- LAYER 7: NUM -->
+<!-- NUM -->
 <div class="layer">
   <div class="layer-title">NUM <span>(hold BSPC)</span></div>
   <div class="row">
@@ -201,7 +231,7 @@
   </div>
 </div>
 
-<!-- LAYER 8: SYM -->
+<!-- SYM -->
 <div class="layer">
   <div class="layer-title">SYM <span>(hold RET)</span></div>
   <div class="row">
@@ -222,7 +252,7 @@
   </div>
 </div>
 
-<!-- LAYER 9: FUN -->
+<!-- FUN -->
 <div class="layer">
   <div class="layer-title">FUN <span>(hold F19)</span></div>
   <div class="row">
@@ -245,7 +275,7 @@
 
 </div><!-- .layers -->
 
-<div style="margin-top: 6px; font-size: 8px; color: #888; text-align: center;">
+<div id="legend-color" style="margin-top: 6px; font-size: 8px; color: #888; text-align: center;">
   <strong>Legend:</strong>
   <span style="background:#fef3c7;border:1px solid #d97706;padding:1px 4px;border-radius:2px;">Hold = mod</span>
   <span style="background:#d1fae5;border:1px solid #059669;padding:1px 4px;border-radius:2px;">Nav/Action</span>
@@ -256,6 +286,26 @@
   <span style="background:#f3f4f6;border:1px solid #d1d5db;padding:1px 4px;border-radius:2px;color:#aaa;">Unused</span>
   &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; TP S+/- = Trackpoint sensitivity &nbsp;|&nbsp; #### = held layer key
 </div>
+
+<div id="legend-bw" style="display:none; margin-top: 6px; font-size: 8px; color: #555; text-align: center;">
+  <strong>Legend:</strong>
+  <span style="border:2px dashed #000;padding:1px 4px;border-radius:2px;font-weight:bold;">Hold = mod</span>
+  <span style="background:#e8e8e8;border:1.5px solid #000;padding:1px 4px;border-radius:2px;">Nav/Action</span>
+  <span style="background:#000;color:#fff;padding:1px 4px;border-radius:2px;font-weight:bold;">Held layer</span>
+  <span style="border:3px double #000;padding:1px 4px;border-radius:2px;font-weight:bold;">Bootloader</span>
+  <span style="border:2px solid #000;padding:1px 4px;border-radius:2px;">Thumb key</span>
+  <span style="border:2px solid #000;padding:1px 4px;border-radius:50%;">Encoder</span>
+  <span style="border:1px dotted #bbb;padding:1px 4px;border-radius:2px;color:#bbb;">Unused</span>
+  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; TP S+/- = Trackpoint sensitivity &nbsp;|&nbsp; #### = held layer key
+</div>
+
+<script>
+document.querySelector('.theme-toggle').addEventListener('click', function() {
+  var isBW = document.body.classList.contains('bw');
+  document.getElementById('legend-color').style.display = isBW ? 'none' : '';
+  document.getElementById('legend-bw').style.display = isBW ? '' : 'none';
+});
+</script>
 
 </body>
 </html>
