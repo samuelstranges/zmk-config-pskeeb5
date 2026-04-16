@@ -14,15 +14,15 @@
 // Custom BASE: QWERTY with bilateral home row mods (HJKL right-hand)
 #define MIRYOKU_LAYER_BASE \
 &kp Q,             &kp W,             &kp E,             &kp R,             &kp T,             &kp Y,             &kp U,             &kp I,             &kp O,             &kp P,             \
-U_HML(LGUI, A),    U_HML(LALT, S),    U_HML(LCTRL, D),   U_HML(LSHFT, F),   &kp G,             U_HMR(LSHFT, H),   U_HMR(LCTRL, J),   U_HMR(LALT, K),    U_HMR(LGUI, L),    &kp SQT,           \
-U_HML(LS(LA(LC(LGUI))), Z), U_HML(RALT, X), &kp C,          &kp V,             &kp B,             &kp N,             &kp M,             U_HMR(RALT, COMMA), U_HMR(LS(LA(LC(LGUI))), DOT), &kp SLASH, \
+U_HML(LGUI, A),    U_HML(LALT, S),    U_HML(LCTRL, D),   U_HML(LSHFT, F),   &kp G,             U_HMR(LSHFT, H),   U_HMR(LCTRL, J),   U_HMR(LALT, K),    U_HMR(LGUI, L),    &kp SEMICOLON,           \
+U_HML(LS(LA(LC(LGUI))), Z), U_HML(RALT, X), &kp C,          &kp V,             &kp B,             &kp N,             &kp M,             U_HMR(RALT, COMMA), U_HMR(LS(LA(LC(LGUI))), DOT), &kp SQT, \
 U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, F19),  U_NP,              U_NP
 
 // EXTRA: same as BASE
 #define MIRYOKU_LAYER_EXTRA \
 &kp Q,             &kp W,             &kp E,             &kp R,             &kp T,             &kp Y,             &kp U,             &kp I,             &kp O,             &kp P,             \
-U_HML(LGUI, A),    U_HML(LALT, S),    U_HML(LCTRL, D),   U_HML(LSHFT, F),   &kp G,             U_HMR(LSHFT, H),   U_HMR(LCTRL, J),   U_HMR(LALT, K),    U_HMR(LGUI, L),    &kp SQT,           \
-U_HML(LS(LA(LC(LGUI))), Z), U_HML(RALT, X), &kp C,          &kp V,             &kp B,             &kp N,             &kp M,             U_HMR(RALT, COMMA), U_HMR(LS(LA(LC(LGUI))), DOT), &kp SLASH, \
+U_HML(LGUI, A),    U_HML(LALT, S),    U_HML(LCTRL, D),   U_HML(LSHFT, F),   &kp G,             U_HMR(LSHFT, H),   U_HMR(LCTRL, J),   U_HMR(LALT, K),    U_HMR(LGUI, L),    &kp SEMICOLON,           \
+U_HML(LS(LA(LC(LGUI))), Z), U_HML(RALT, X), &kp C,          &kp V,             &kp B,             &kp N,             &kp M,             U_HMR(RALT, COMMA), U_HMR(LS(LA(LC(LGUI))), DOT), &kp SQT, \
 U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, F19),  U_NP,              U_NP
 
 // Custom NAV: removed clipboard from top right row
@@ -57,17 +57,17 @@ U_NP,              U_NP,              U_BTN3,            U_BTN1,            U_BT
 
 // Custom NUM: shift mods left to align with HJKL home row
 #define MIRYOKU_LAYER_NUM \
-&kp LBKT,          &kp N7,            &kp N8,            &kp N9,            &kp RBKT,          &u_to_U_BASE,      &u_to_U_EXTRA,     &u_to_U_TAP,       U_BOOT,            U_NA,            \
-&kp SEMI,          &kp N4,            &kp N5,            &kp N6,            &kp EQUAL,         &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,          U_NA,              \
-&kp GRAVE,         &kp N1,            &kp N2,            &kp N3,            &kp BSLH,          &u_to_U_NUM,       &u_to_U_NAV,       &kp RALT,          U_NA,              U_NA,              \
-U_NP,              U_NP,              &kp DOT,           &kp N0,            &kp MINUS,         U_NA,              U_NA,              U_NA,              U_NP,              U_NP
+&kp CARET,         &kp N7,            &kp N8,            &kp N9,            &kp TILDE,         &u_to_U_BASE,      &u_to_U_EXTRA,     &u_to_U_TAP,       U_BOOT,            U_NA,            \
+&kp ASTRK,         &kp N4,            &kp N5,            &kp N6,            &kp PLUS,        &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,          U_NA,              \
+&kp SLASH,         &kp N1,            &kp N2,            &kp N3,            &kp MINUS,       &u_to_U_NUM,       &u_to_U_NAV,       &kp RALT,          U_NA,              U_NA,              \
+U_NP,              U_NP,              &kp N0,            &kp DOT,           &kp EQUAL,       U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 
 // Custom SYM: shift mods left to align with HJKL home row
 #define MIRYOKU_LAYER_SYM \
-&kp LBRC,          &kp AMPS,          &kp ASTRK,         &kp LPAR,          &kp RBRC,          &u_to_U_BASE,      &u_to_U_EXTRA,     &u_to_U_TAP,       U_BOOT,            U_NA,            \
-&kp COLON,         &kp DLLR,          &kp PRCNT,         &kp CARET,         &kp PLUS,          &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,          U_NA,              \
-&kp TILDE,         &kp EXCL,          &kp AT,            &kp HASH,          &kp PIPE,          &u_to_U_SYM,       &u_to_U_MOUSE,     &kp RALT,          U_NA,              U_NA,              \
-U_NP,              U_NP,              &kp LPAR,          &kp RPAR,          &kp UNDER,         U_NA,              U_NA,              U_NA,              U_NP,              U_NP
+&kp EXCL,          &kp AT,            &kp HASH,          &kp DLLR,          &kp PRCNT,         &u_to_U_BASE,      &u_to_U_EXTRA,     &u_to_U_TAP,       U_BOOT,            U_NA,            \
+&kp LPAR,          &kp RPAR,          &kp LBKT,          &kp RBKT,          &kp QMARK,         &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,          U_NA,              \
+&kp LBRC,          &kp RBRC,          &kp SLASH,         &kp BSLH,          &kp PIPE,          &u_to_U_SYM,       &u_to_U_MOUSE,     &kp RALT,          U_NA,              U_NA,              \
+U_NP,              U_NP,              &kp AMPS,          &kp UNDER,         &kp GRAVE,         U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 
 // Custom FUN: shift mods left to align with HJKL home row
 #define MIRYOKU_LAYER_FUN \
