@@ -65,7 +65,7 @@ U_NP,              U_NP,              &kp N0,            &kp DOT,           &kp 
 // Custom SYM: shift mods left to align with HJKL home row
 #define MIRYOKU_LAYER_SYM \
 &kp EXCL,          &kp AT,            &kp HASH,          &kp DLLR,          &kp PRCNT,         &u_to_U_BASE,      &u_to_U_EXTRA,     &u_to_U_TAP,       U_BOOT,            U_NA,            \
-&kp LPAR,          &kp RPAR,          &kp LBKT,          &kp RBKT,          &kp QMARK,         &kp LGUI,          &kp LSHFT,         &kp LALT,          &kp LCTRL,         U_NA,              \
+&kp LBKT,          &kp RBKT,          &kp LPAR,          &kp RPAR,          &kp QMARK,         &kp LGUI,          &kp LSHFT,         &kp LALT,          &kp LCTRL,         U_NA,              \
 &kp LBRC,          &kp RBRC,          &kp SLASH,         &kp BSLH,          &kp PIPE,          &u_to_U_SYM,       &u_to_U_MOUSE,     &kp RALT,          U_NA,              U_NA,              \
 U_NP,              U_NP,              &kp AMPS,          &kp UNDER,         &kp GRAVE,         U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 
