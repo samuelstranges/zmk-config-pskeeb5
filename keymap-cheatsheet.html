@@ -127,7 +127,8 @@
 <h1>pskeeb5 Miryoku Keymap</h1>
 <div class="note">
   Thumb keys: hold for layer, tap for key | Home row: hold for mod, tap for key | Encoder combo (both) = Middle Click<br>
-  Encoders: L = Vol Down/Up, R = Prev/Next (Mouse layer: L = Scroll U/D, R = Scroll L/R)
+  Encoders: L = Vol Down/Up, R = Prev/Next (Mouse layer: L = Scroll U/D, R = Scroll L/R)<br>
+  Trackpoint: BASE/others = cursor | NAV (hold Space) = scroll | MOUSE (hold TAB) = cursor, so click-drag/select still works
 </div>
 
 <div class="layers">
@@ -176,7 +177,7 @@
 
 <!-- NAV -->
 <div class="layer">
-  <div class="layer-title">NAV <span>(hold Space)</span></div>
+  <div class="layer-title">NAV <span>(hold Space) trackpoint = scroll</span></div>
   <div class="row">
     <div class="k danger">BOOT</div><div class="k">toTAP</div><div class="k">toEXT</div><div class="k">toBASE</div><div class="k trans">--</div><div class="gap"></div>
     <div class="k trans">--</div><div class="k trans">--</div><div class="k trans">--</div><div class="k trans">--</div><div class="k trans">--</div>
@@ -191,7 +192,7 @@
   </div>
   <div class="row">
     <div class="k invis"></div><div class="k enc">Mute</div><div class="k trans">--</div><div class="k held">####</div><div class="k trans">--</div><div class="gap"></div>
-    <div class="k thumb">RET</div><div class="k thumb">BSPC</div><div class="k thumb">DEL</div><div class="k enc">Play</div><div class="k invis"></div>
+    <div class="k thumb">RET</div><div class="k thumb">Ctl+&uarr;<div class="sub">MsnCtl</div></div><div class="k thumb">DEL</div><div class="k enc">Play</div><div class="k invis"></div>
   </div>
 </div>
 
@@ -225,11 +226,11 @@
   </div>
   <div class="row">
     <div class="k mod">CTL</div><div class="k mod">ALT</div><div class="k mod">SFT</div><div class="k mod">GUI</div><div class="k trans">--</div><div class="gap"></div>
-    <div class="k nav">Scrl L</div><div class="k nav">Scrl D</div><div class="k nav">Scrl U</div><div class="k nav">Scrl R</div><div class="k none">--</div>
+    <div class="k nav">Scrl L</div><div class="k nav">Scrl D</div><div class="k nav">Scrl U</div><div class="k nav">Scrl R</div><div class="k">TP V6+</div>
   </div>
   <div class="row">
     <div class="k trans">--</div><div class="k mod">RALT</div><div class="k">toSYM</div><div class="k">toMSE</div><div class="k trans">--</div><div class="gap"></div>
-    <div class="k">TP S-</div><div class="k">TP S+</div><div class="k none">--</div><div class="k none">--</div><div class="k none">--</div>
+    <div class="k">TP S-</div><div class="k">TP S+</div><div class="k">TP NI-</div><div class="k">TP NI+</div><div class="k">TP V6-</div>
   </div>
   <div class="row">
     <div class="k invis"></div><div class="k enc">Mute</div><div class="k trans">--</div><div class="k trans">--</div><div class="k held">####</div><div class="gap"></div>
@@ -291,7 +292,8 @@
   <span style="background:#ede9fe;border:1px solid #7c3aed;padding:1px 4px;border-radius:2px;">Thumb key</span>
   <span style="background:#dbeafe;border:1px solid #3b82f6;padding:1px 4px;border-radius:2px;">Encoder</span>
   <span style="background:#f3f4f6;border:1px solid #d1d5db;padding:1px 4px;border-radius:2px;color:#aaa;">Unused</span>
-  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; TP S+/- = Trackpoint sensitivity &nbsp;|&nbsp; #### = held layer key
+  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; #### = held layer key<br>
+  TP S+/- = Sensitivity &nbsp;|&nbsp; TP NI+/- = Negative Inertia (kick given to small/slow moves so they don't feel sluggish; too high = tiny moves overshoot) &nbsp;|&nbsp; TP V6+/- = Plateau Speed (force needed to hit max speed; too low = reaches full speed with barely a nudge)
 </div>
 
 <div id="legend-bw" style="display:none; margin-top: 6px; font-size: 8px; color: #555; text-align: center;">
@@ -303,7 +305,8 @@
   <span style="border:2px solid #000;padding:1px 4px;border-radius:2px;">Thumb key</span>
   <span style="border:2px solid #000;padding:1px 4px;border-radius:50%;">Encoder</span>
   <span style="border:1px dotted #bbb;padding:1px 4px;border-radius:2px;color:#bbb;">Unused</span>
-  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; TP S+/- = Trackpoint sensitivity &nbsp;|&nbsp; #### = held layer key
+  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; #### = held layer key<br>
+  TP S+/- = Sensitivity &nbsp;|&nbsp; TP NI+/- = Negative Inertia (kick given to small/slow moves so they don't feel sluggish; too high = tiny moves overshoot) &nbsp;|&nbsp; TP V6+/- = Plateau Speed (force needed to hit max speed; too low = reaches full speed with barely a nudge)
 </div>
 
 <div id="legend-dark" style="display:none; margin-top: 6px; font-size: 8px; color: #888; text-align: center;">
@@ -315,7 +318,8 @@
   <span style="background:#2a1a4e;border:1px solid #7c3aed;padding:1px 4px;border-radius:2px;color:#c4b5fd;">Thumb key</span>
   <span style="background:#0f2a4a;border:1px solid #3b82f6;padding:1px 4px;border-radius:2px;color:#93c5fd;">Encoder</span>
   <span style="background:#1e1e2e;border:1px solid #333;padding:1px 4px;border-radius:2px;color:#555;">Unused</span>
-  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; TP S+/- = Trackpoint sensitivity &nbsp;|&nbsp; #### = held layer key
+  &nbsp;|&nbsp; Clipboard = Cmd+Z/X/C/V &nbsp;|&nbsp; #### = held layer key<br>
+  TP S+/- = Sensitivity &nbsp;|&nbsp; TP NI+/- = Negative Inertia (kick given to small/slow moves so they don't feel sluggish; too high = tiny moves overshoot) &nbsp;|&nbsp; TP V6+/- = Plateau Speed (force needed to hit max speed; too low = reaches full speed with barely a nudge)
 </div>
 
 <script>

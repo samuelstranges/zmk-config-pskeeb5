@@ -25,12 +25,13 @@ U_HML(LCTRL, A),   U_HML(LALT, S),    U_HML(LSHFT, D),   U_HML(LGUI, F),    &kp 
 U_HML(LS(LA(LC(LGUI))), Z), U_HML(RALT, X), &kp C,          &kp V,             &kp B,             &kp N,             &kp M,             U_HMR(RALT, COMMA), U_HMR(LS(LA(LC(LGUI))), DOT), &kp SQT, \
 U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, F19),  U_NP,              U_NP
 
-// Custom NAV: removed clipboard from top right row
+// Custom NAV: removed clipboard from top right row.
+// BSPC position replaced with Ctrl+Up (macOS Mission Control default shortcut).
 #define MIRYOKU_LAYER_NAV \
 U_BOOT,            &u_to_U_TAP,       &u_to_U_EXTRA,     &u_to_U_BASE,      U_NA,              U_NA,              U_NA,              U_NA,              U_NA,              U_NA,              \
 &kp LCTRL,         &kp LALT,          &kp LSHFT,         &kp LGUI,          U_NA,              &kp LEFT,          &kp DOWN,          &kp UP,            &kp RIGHT,         &u_caps_word,      \
 U_NA,              &kp RALT,          &u_to_U_NUM,       &u_to_U_NAV,       U_NA,              &kp HOME,          &kp PG_DN,         &kp PG_UP,         &kp END,           &kp INS,           \
-U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              &kp RET,           &kp BSPC,          &kp DEL,           U_NP,              U_NP
+U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              &kp RET,           &kp LC(UP),        &kp DEL,           U_NP,              U_NP
 
 // Custom MEDIA: removed RGB from top right row
 #define MIRYOKU_LAYER_MEDIA \
@@ -42,10 +43,12 @@ U_NP,              U_NP,              U_NA,              U_NA,              U_NA
 // Custom Mouse layer: trackpoint handles cursor movement,
 // so replace mmv keys with trackpoint sensitivity controls.
 // Keep scroll and mouse button bindings. Removed clipboard from top right row.
+// Row 2 right pinkie (;) and row 3 right ,./' give interactive tuning for
+// trackpoint feel: Sens (N/M), Negative Inertia (,/.), Value6 (' / ;).
 #define MIRYOKU_LAYER_MOUSE \
 U_BOOT,            &u_to_U_TAP,       &u_to_U_EXTRA,     &u_to_U_BASE,      U_NA,              U_NA,              U_NA,              U_NA,              U_NA,              U_NA,              \
-&kp LCTRL,         &kp LALT,          &kp LSHFT,         &kp LGUI,          U_NA,              U_WH_L,            U_WH_D,            U_WH_U,            U_WH_R,            U_NU,              \
-U_NA,              &kp RALT,          &u_to_U_SYM,       &u_to_U_MOUSE,     U_NA,              U_MSS_TP_S_D,      U_MSS_TP_S_I,      U_NU,              U_NU,              U_NU,              \
+&kp LCTRL,         &kp LALT,          &kp LSHFT,         &kp LGUI,          U_NA,              U_WH_L,            U_WH_D,            U_WH_U,            U_WH_R,            U_MSS_TP_V6_I,     \
+U_NA,              &kp RALT,          &u_to_U_SYM,       &u_to_U_MOUSE,     U_NA,              U_MSS_TP_S_D,      U_MSS_TP_S_I,      U_MSS_TP_NI_D,     U_MSS_TP_NI_I,     U_MSS_TP_V6_D,     \
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              U_BTN1,            U_BTN2,            U_BTN3,            U_NP,              U_NP
 
 // Custom BUTTON: shift mods left to align with HJKL home row

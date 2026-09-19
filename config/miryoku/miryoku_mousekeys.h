@@ -4,7 +4,11 @@
 #pragma once
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1250
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
+// Miryoku's generated default here is 100 (10x ZMK's own stock default of
+// 10), intended to be paired with the &msc acceleration ramp below - which
+// is disabled, so scroll hit full speed near-instantly. ZMK's stock value
+// of 10 felt too slow; 25 is a middle ground.
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 
 #define U_MOUSE_MOVE_EXPONENT 1
 #define U_MOUSE_MOVE_TIME 1500

@@ -5,11 +5,45 @@
 #include <dt-bindings/zmk/mouse_settings.h>
 #define U_MSS_TP_S_I &mms MS_TP_SENSITIVITY_INCR
 #define U_MSS_TP_S_D &mms MS_TP_SENSITIVITY_DECR
+// Negative Inertia: extra "kick" given to small/slow movements to overcome
+// stick stiction. Too high makes tiny movements overshoot/feel amplified.
+#define U_MSS_TP_NI_I &mms MS_TP_NEG_INERTIA_INCR
+#define U_MSS_TP_NI_D &mms MS_TP_NEG_INERTIA_DECR
+// Value6 / Upper Plateau Speed: the force level at which output speed
+// saturates. Too low means full speed is reached with little force.
+#define U_MSS_TP_V6_I &mms MS_TP_VALUE6_INCR
+#define U_MSS_TP_V6_D &mms MS_TP_VALUE6_DECR
 
 // Miryoku config, mapping, and keymap
 #include "miryoku/custom_config.h"
 #include "miryoku/mapping/38/pskeeb5.h"
 #include "miryoku/miryoku.dtsi"
+
+// Route trackpoint movement to scroll-wheel events while the Nav layer
+// (layer 4, see config/miryoku/miryoku_babel/miryoku_layer_list.h) is held,
+// instead of moving the cursor. Deliberately NOT the Mouse layer (5): the
+// Mouse layer's bottom row has LCLK/RCLK/MCLK, and if trackpoint movement
+// scrolled there too, holding a click to drag-select would scroll instead
+// of moving the cursor. Keeping scroll on Nav leaves Mouse layer trackpoint
+// movement as normal cursor movement, so click-and-drag/select works there,
+// while Nav gives a dedicated scroll gesture. The upstream shield default
+// (scroll-layer = <3>) targets layer index 3 (BUTTON), which is unrelated.
+// MOUSE_PS2_DT_PRESENT is only defined on the right-side (central) build,
+// where the trackpoint's mouse_ps2_input_listener node actually exists.
+//
+// scroll-scale-divisor requires our fork of kb_zmk_ps2_mouse_trackpoint_driver
+// (see config/west.yml) which makes it configurable; upstream hardcodes 2.
+// Our fork also carries the division remainder forward across packets
+// instead of truncating each one independently, so small/slow movements
+// accumulate toward a scroll tick rather than being discarded - earlier
+// testing at 6/20/100 predates that fix and isn't representative. 10 as a
+// fresh starting point post-fix.
+#ifdef MOUSE_PS2_DT_PRESENT
+&mouse_ps2_input_listener {
+    scroll-layer = <4>;
+    scroll-scale-divisor = <10>;
+};
+#endif
 
 // Additional behaviors for encoders
 / {

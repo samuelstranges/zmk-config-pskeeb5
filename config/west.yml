@@ -2,7 +2,19 @@ manifest:
   remotes:
     - name: klesh
       url-base: https://github.com/klesh
+    - name: samuelstranges
+      url-base: https://github.com/samuelstranges
   projects:
+    # Override the ps2 trackpoint driver pulled in by klesh/zmk's app/west.yml
+    # with our fork, which adds a configurable scroll-scale-divisor property
+    # (see config/pskeeb5.keymap) so scroll speed can be tuned independently
+    # of cursor speed. Must be listed before the `zmk` import below: west
+    # gives precedence to whichever project definition it resolves first,
+    # and imported projects are resolved when the importing entry is
+    # processed, so this only overrides klesh's copy if it comes first.
+    - name: kb_zmk_ps2_mouse_trackpoint_driver
+      remote: samuelstranges
+      revision: configurable-scroll-scale
     - name: zmk
       remote: klesh
       revision: main
