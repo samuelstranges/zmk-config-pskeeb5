@@ -31,17 +31,20 @@
 // MOUSE_PS2_DT_PRESENT is only defined on the right-side (central) build,
 // where the trackpoint's mouse_ps2_input_listener node actually exists.
 //
-// scroll-scale-divisor requires our fork of kb_zmk_ps2_mouse_trackpoint_driver
-// (see config/west.yml) which makes it configurable; upstream hardcodes 2.
-// Our fork also carries the division remainder forward across packets
-// instead of truncating each one independently, so small/slow movements
-// accumulate toward a scroll tick rather than being discarded - earlier
-// testing at 6/20/100 predates that fix and isn't representative. 10 as a
-// fresh starting point post-fix.
+// scroll-scale-divisor and scroll-tick-value require our fork of
+// kb_zmk_ps2_mouse_trackpoint_driver (see config/west.yml); upstream has
+// neither. scroll-tick-value = <1> switches scroll to fixed-step mode: every
+// scroll-scale-divisor worth of accumulated movement emits one constant-size
+// tick, instead of a value proportional to how hard/fast you pushed. That
+// caps top speed at a flat rate (harder push = ticks fire faster, not
+// bigger) - proportional mode (tick-value unset) had no such ceiling, which
+// is why it still felt too fast at the top end even after the remainder-carry
+// fix. scroll-scale-divisor now controls how much movement = one tick.
 #ifdef MOUSE_PS2_DT_PRESENT
 &mouse_ps2_input_listener {
     scroll-layer = <4>;
     scroll-scale-divisor = <10>;
+    scroll-tick-value = <1>;
 };
 #endif
 
