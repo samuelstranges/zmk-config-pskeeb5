@@ -43,7 +43,7 @@
 #ifdef MOUSE_PS2_DT_PRESENT
 &mouse_ps2_input_listener {
     scroll-layer = <4>;
-    scroll-scale-divisor = <10>;
+    scroll-scale-divisor = <30>;
     scroll-tick-value = <1>;
 };
 #endif
